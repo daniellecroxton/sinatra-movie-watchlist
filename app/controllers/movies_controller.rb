@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
 
 #New Movie
   get '/movies/new' do
-    erb : 'movies/create_movie'
+    erb :'movies/create_movie'
   end
 
   post '/movies' do
@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
 #Show Movie and Delete
   get 'movies/:id' do
-    erb: 'movies/show_movie'
+    erb :'movies/show_movie'
   end
 
   delete 'movies/:id/delete' do
