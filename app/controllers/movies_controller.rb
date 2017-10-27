@@ -36,6 +36,15 @@ class MoviesController < ApplicationController
     end
   end
 
+  #Edit Movie
+      get '/movies/:slug/edit' do
+        erb :'movies/edit_movie'
+      end
+
+      patch "/movies/:slug" do
+
+      end
+
 #Show Movie and Delete
     get "/movies/:slug" do
       # binding.pry
@@ -58,12 +67,6 @@ class MoviesController < ApplicationController
       end
     end
 
-#Edit Movie
-  get '/movies/:slug/edit' do
-    erb :'movies/edit_movie'
-  end
 
-  patch "/movies/:slug" do
 
-  end
 end
