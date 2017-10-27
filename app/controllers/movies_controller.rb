@@ -12,7 +12,9 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-
+    @movie = Movie.create(params)
+    flash[:message] = "Successfully created movie."
+    redirect "/movies/#{@movie.id}"
   end
 
 #Edit Movie
