@@ -2,4 +2,16 @@
   <%= flash[:message] %>
 <% end %>
 
-show_movie.erb
+<h1><%= @movie.title %></h1>
+<p>Notes: <%= @movie.notes %></p>
+<p>Genre: <%= @movie.genre%></p>
+<p>Status: <%= @movie.watched%></p>
+
+<form action="/movies/<%= @movie.slug %>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <p><button type="submit" value="Delete Movie"></p>
+</form>
+
+<form action="/movies/<%= @movie.slug %>/edit" method="get">
+  <p><button type="button" value="Edit Movie"></p>
+</form>

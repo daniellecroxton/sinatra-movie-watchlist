@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
       end
     end
 
-    delete 'movies/:slug/delete' do
+    delete '/movies/:slug/delete' do
 
     end
 
