@@ -24,8 +24,8 @@ class Movie < ActiveRecord::Base
    end
 
   def self.find_by_slug(slug)
-    self.all.find do |song|
-      song.slug == slug
+    self.all.find do |movie|
+      movie.slug == slug
     end
   end
 
