@@ -1,5 +1,3 @@
-require 'rack-flash'
-
 class UsersController < ApplicationController
   use Rack::Flash
 
@@ -40,11 +38,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/movies"
     end
-  end
-
-#Show User
-  get '/users/:slug' do
-    erb :'users/show'
   end
 
 #Logout

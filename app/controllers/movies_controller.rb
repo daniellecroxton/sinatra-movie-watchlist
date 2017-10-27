@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
 
 #Movies Index
   get '/movies' do
+    @user = current_user
     erb :'movies/movies'
   end
 

@@ -1,1 +1,4 @@
-movies.erb
+<h1>Movies</h1>
+<ol><% current_user.movies.each do |movie| %>
+<li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
+<% end %></ol>
