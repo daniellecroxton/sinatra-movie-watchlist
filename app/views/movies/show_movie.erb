@@ -6,9 +6,10 @@
 <p>Notes: <%= @movie.notes %></p>
 <p>Genre: <%= @movie.genre%></p>
 <p>Status: <% if @movie.watched == 1 %>
-    <%= "Yes"%>
+    <%= "Watched"%>
   <% else %>
-    <%= "No"%>
+    <%= "Unwatched"%>
+  <% end %>
 </p>
 
 <form action="/movies/<%= @movie.slug %>/edit" method="get">
