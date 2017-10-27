@@ -14,24 +14,25 @@ class MoviesController < ApplicationController
   post '/movies' do
     @movie = Movie.create(params)
     flash[:message] = "Successfully created movie."
-    redirect "/movies/#{@movie.id}"
+    redirect "/movies/#{@movie.slug}"
   end
 
 #Edit Movie
-  get '/movies/:id/edit' do
+  get '/movies/:slug/edit' do
     erb :'movies/edit_movie'
   end
 
-  patch '/movies/:id' do
+  patch '/movies/:slug' do
 
   end
 
 #Show Movie and Delete
-  get 'movies/:id' do
+  get 'movies/:slug' do
+    @movie = Movie.find_by_slug(params[:slug])
     erb :'movies/show_movie'
   end
 
-  delete 'movies/:id/delete' do
+  delete 'movies/:slug/delete' do
 
   end
 
