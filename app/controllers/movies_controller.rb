@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-    binding.pry
+    # binding.pry
     if params[:title] == ""
       redirect to "/movies/new"
     elsif current_user.movies.find_by(title: params[:title]) == nil

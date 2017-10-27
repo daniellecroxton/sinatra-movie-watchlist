@@ -1,4 +1,9 @@
 <h1>Movies</h1>
-<ol><% current_user.movies.each do |movie| %>
-<li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
-<% end %></ol>
+
+<% if current_user.movies.empty? %>
+  <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
+<% else %>
+  <ol><% current_user.movies.each do |movie| %>
+  <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
+  <% end %></ol>
+<% end %>
