@@ -2,7 +2,7 @@ class Movie < ActiveRecord::Base
   belongs_to :user
 
   def slug
-    slug = self.name.strip.downcase
+    slug = self.title.strip.downcase
 
     #blow away apostrophes
     slug.gsub! /['`]/,""

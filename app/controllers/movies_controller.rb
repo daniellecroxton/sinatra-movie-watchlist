@@ -12,9 +12,16 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-    @movie = Movie.create(params)
-    flash[:message] = "Successfully created movie."
-    redirect "/movies/#{@movie.slug}"
+    if params[:title] == ""
+      redirect to "/movies/new"
+    else
+      @movie = Movie.new(params)
+      @movie.user_id == current_user.id
+      @movie.save
+      # binding.pry
+      flash[:message] = "Successfully created movie."
+      redirect "/movies/#{@movie.slug}"
+    end
   end
 
 #Edit Movie
