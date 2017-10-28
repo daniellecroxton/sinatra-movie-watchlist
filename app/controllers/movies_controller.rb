@@ -20,7 +20,6 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-    # binding.pry
     if params[:title] == ""
       redirect to "/movies/new"
     elsif current_user.movies.find_by(title: params[:title]) == nil
@@ -52,7 +51,7 @@ class MoviesController < ApplicationController
         flash[:message] = "Movie title cannot be blank."
         redirect to "/movies/#{@movie.slug}/edit"
       else
-        @movie = Movie.update(params)
+        @movie.update(title: params[:title], notes: params[:notes], genre: params[:genre], watched: params[:watched])
         @movie.save
         flash[:message] = "Successfully updated movie."
         redirect "/movies/#{@movie.slug}"
@@ -71,7 +70,6 @@ class MoviesController < ApplicationController
 
     delete '/movies/:slug/delete' do
       @movie = Movie.find_by_slug(params[:slug])
-      # binding.pry
       if logged_in? && @movie.user_id == current_user.id
         @movie.delete
         redirect '/movies'

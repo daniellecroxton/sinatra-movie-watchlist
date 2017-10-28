@@ -4,7 +4,7 @@
 
 <h1>Edit <%= @movie.title %></h1>
 <form method="post" action="/movies/<%=@movie.slug%>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input id="hidden" type="hidden" name="_method" value="patch"></input>
 
   <p>
     * = Required field
