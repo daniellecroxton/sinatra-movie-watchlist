@@ -47,7 +47,16 @@ class MoviesController < ApplicationController
     end
 
     patch "/movies/:slug" do
-
+      @movie = Movie.find_by_slug(params[:slug])
+      if params[:title] == ""
+        flash[:message] = "Movie title cannot be blank."
+        redirect to "/movies/#{@movie.slug}/edit"
+      else
+        @movie = Movie.update(params)
+        @movie.save
+        flash[:message] = "Successfully updated movie."
+        redirect "/movies/#{@movie.slug}"
+      end
     end
 
 #Show Movie and Delete
