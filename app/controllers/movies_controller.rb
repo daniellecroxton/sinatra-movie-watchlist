@@ -36,18 +36,22 @@ class MoviesController < ApplicationController
     end
   end
 
-  #Edit Movie
-      get '/movies/:slug/edit' do
+#Edit Movie
+    get '/movies/:slug/edit' do
+      if logged_in?
+        @movie = Movie.find_by_slug(params[:slug])
         erb :'movies/edit_movie'
+      else
+        redirect '/login'
       end
+    end
 
-      patch "/movies/:slug" do
+    patch "/movies/:slug" do
 
-      end
+    end
 
 #Show Movie and Delete
     get "/movies/:slug" do
-      # binding.pry
       if logged_in?
         @movie = Movie.find_by_slug(params[:slug])
         erb :'movies/show_movie'
