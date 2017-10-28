@@ -13,14 +13,20 @@
 </p>
 
 <form action="/movies/<%= @movie.slug %>/edit" method="get">
-  <p><button type="button" value="Edit Movie">Edit Movie</p>
+  <p><button type="submit" value="Edit Movie">Edit Movie</button></p>
 </form>
 
 <form action="/movies/<%= @movie.slug %>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <p><button type="submit" value="Delete Movie">Delete Movie</p>
+  <p><button type="submit" value="Delete Movie">Delete Movie</button></p>
 </form>
 
 <form action="/movies" method="get">
-  <p><button type="button" value="Back to All Movies">Back to All Movies</p>
+  <p><button type="submit" value="Back to All Movies">Back to All Movies</button></p>
+</form>
+
+<p></p>
+
+<form action="/logout" method="get">
+  <p><button type="submit" value="Logout">Logout</button></p>
 </form>
