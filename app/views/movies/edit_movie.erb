@@ -14,30 +14,30 @@
   <p>
     <label for="notes">Notes: </label>
     </p><p>
-    <textarea id="notes" name="notes" rows="10" cols="30" value="<%= @movie.notes %>" ></textarea>
+    <textarea id="notes" name="notes" rows="10" cols="30"><%= @movie.notes %></textarea>
   </p>
 
   <p>
     <label for="genre">Genre:* </label>
     </p><p>
-    <input type="radio" name="genre" id="genre1" value="Action" required checked> Action<br>
-    <input type="radio" name="genre" id="genre2" value="Adventure"> Adventure<br>
-    <input type="radio" name="genre" id="genre3" value="Comedy"> Comedy<br>
-    <input type="radio" name="genre" id="genre4" value="Documentary"> Documentary<br>
-    <input type="radio" name="genre" id="genre5" value="Drama"> Drama<br>
-    <input type="radio" name="genre" id="genre6" value="Horror"> Horror<br>
-    <input type="radio" name="genre" id="genre7" value="Musical"> Musical<br>
-    <input type="radio" name="genre" id="genre8" value="Romantic Comedy"> Romantic Comedy<br>
-    <input type="radio" name="genre" id="genre9" value="Suspense"> Suspense<br>
+    <input type="radio" name="genre" id="genre1" value="Action" required  <%='checked' if @movie.genre == "Action" %>> Action</input><br>
+    <input type="radio" name="genre" id="genre2" value="Adventure" <%='checked' if @movie.genre == "Adventure" %>> Adventure</input><br>
+    <input type="radio" name="genre" id="genre3" value="Comedy" <%='checked' if @movie.genre == "Comedy" %>> Comedy</input><br>
+    <input type="radio" name="genre" id="genre4" value="Documentary" <%='checked' if @movie.genre == "Documentary" %>> Documentary</input><br>
+    <input type="radio" name="genre" id="genre5" value="Drama" <%='checked' if @movie.genre == "Drama" %>> Drama</input><br>
+    <input type="radio" name="genre" id="genre6" value="Horror" <%='checked' if @movie.genre == "Horror" %>> Horror</input><br>
+    <input type="radio" name="genre" id="genre7" value="Musical" <%='checked' if @movie.genre == "Musical" %>> Musical</input><br>
+    <input type="radio" name="genre" id="genre8" value="Romantic Comedy" <%='checked' if @movie.genre == "Romantic Comedy" %>> Romantic Comedy</input><br>
+    <input type="radio" name="genre" id="genre9" value="Suspense" <%='checked' if @movie.genre == "Suspense" %>> Suspense</input><br>
   </p>
 
   <p>
     <label for="watched">Have you seen this movie yet?* </label>
     </p><p>
-    <input type="radio" name="watched" id="watched1" value="1" required> Yes<br>
-    <input type="radio" name="watched" id="watched0" value="0" checked> No<br>
+    <input type="radio" name="watched" id="watched1" value="1" required <%='checked' if @movie.watched == 1 %>> Yes</input><br>
+    <input type="radio" name="watched" id="watched0" value="0" <%='checked' if @movie.watched == 0 %>>  No</input><br>
   </p>
 
-  <button type="submit">Create Movie</button>
+  <button type="submit">Save Movie</button>
 
 </form>
