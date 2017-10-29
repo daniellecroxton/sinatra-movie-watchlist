@@ -1,11 +1,16 @@
 <h1>Movies</h1>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <% if current_user.movies.empty? %>
   <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
 <% else %>
-  <ol><% current_user.movies.each do |movie| %>
+  <p><a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
+  <ul><% current_user.movies.each do |movie| %>
   <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
-  <% end %></ol>
+  <% end %></ul>
 <% end %>
 
 <form action="/logout" method="get">

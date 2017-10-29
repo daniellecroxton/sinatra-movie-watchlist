@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
       @movie.user_id = current_user.id
       @movie.save
       flash[:message] = "Successfully created movie."
-      redirect "/movies/#{@movie.slug}"
+      redirect "/movies"
     else
       @movie = current_user.movies.find_by(title: params[:title])
       flash[:message] = "Movie already exists, click 'Edit Movie' to change your movie."
