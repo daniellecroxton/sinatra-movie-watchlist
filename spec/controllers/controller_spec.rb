@@ -132,10 +132,10 @@ describe ApplicationController do
     context 'logged in' do
       it 'lets a user view the movies index if logged in' do
         user1 = User.create(:email => "starz@aol.com", :password => "kittens")
-        movie1 = Tweet.create(:title => "Ghostbusters", :user_id => user1.id)
+        movie1 = Movie.create(:title => "Ghostbusters", :user_id => user1.id)
 
         user2 = User.create(:email => "silver@aol.com", :password => "horses")
-        movie2 = Tweet.create(:title => "Friday the 13th", :user_id => user2.id)
+        movie2 = Movie.create(:title => "Friday the 13th", :user_id => user2.id)
 
         visit '/login'
 
@@ -170,7 +170,7 @@ describe ApplicationController do
         expect(page.status_code).to eq(200)
       end
 
-      it 'lets user create a tweet if they are logged in' do
+      it 'lets user create a movie if they are logged in' do
         user = User.create(:email => "starz@aol.com", :password => "kittens")
 
         visit '/login'
@@ -359,7 +359,7 @@ describe ApplicationController do
         fill_in(:password, :with => "kittens")
         click_button 'submit'
         visit "/movies/#{movie.slug}"
-        click_button "Delete Tweet"
+        click_button "Delete Movie"
         expect(page.status_code).to eq(200)
         expect(Movie.find_by(:content => "Ghostbusters!")).to eq(nil)
       end
