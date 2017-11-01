@@ -242,30 +242,30 @@ describe ApplicationController do
 
   describe 'show action' do
     context 'logged in' do
-      it 'displays a single tweet' do
+      it 'displays a single movie' do
 
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "i am a boss at tweeting", :user_id => user.id)
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "The Haunting", :user_id => user.id)
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
 
-        visit "/tweets/#{tweet.id}"
+        visit "/movies/#{movie.id}"
         expect(page.status_code).to eq(200)
-        expect(page.body).to include("Delete Tweet")
-        expect(page.body).to include(tweet.content)
-        expect(page.body).to include("Edit Tweet")
+        expect(page.body).to include("Delete Movie")
+        expect(page.body).to include(movie.title)
+        expect(page.body).to include("Edit Movie")
       end
     end
 
     context 'logged out' do
-      it 'does not let a user view a tweet' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "i am a boss at tweeting", :user_id => user.id)
-        get "/tweets/#{tweet.id}"
+      it 'does not let a user view a movie' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "The Haunting", :user_id => user.id)
+        get "/movies/#{movie.id}"
         expect(last_response.location).to include("/login")
       end
     end
