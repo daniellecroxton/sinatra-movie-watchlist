@@ -265,7 +265,7 @@ describe ApplicationController do
       it 'does not let a user view a movie' do
         user = User.create(:email => "starz@aol.com", :password => "kittens")
         movie = Movie.create(:title => "The Haunting", :user_id => user.id)
-        get "/movies/#{movie.id}"
+        get "/movies/#{movie.slug}"
         expect(last_response.location).to include("/login")
       end
     end
@@ -286,63 +286,63 @@ describe ApplicationController do
         expect(page.body).to include(movie.title)
       end
 
-      it 'does not let a user edit a tweet they did not create' do
-        user1 = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet1 = Tweet.create(:content => "tweeting!", :user_id => user1.id)
+      it 'does not let a user edit a movie they did not create' do
+        user1 = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie2 = Movie.create(:title => "The Addams Family", :user_id => user1.id)
 
-        user2 = User.create(:username => "silverstallion", :email => "silver@aol.com", :password => "horses")
-        tweet2 = Tweet.create(:content => "look at this tweet", :user_id => user2.id)
+        user2 = User.create(:email => "silver@aol.com", :password => "horses")
+        movie2 = Movie.create(:title => "The Blair Witch Project", :user_id => user2.id)
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
         session = {}
         session[:user_id] = user1.id
-        visit "/tweets/#{tweet2.id}/edit"
-        expect(page.current_path).to include('/tweets')
+        visit "/movies/#{movie2.slug}/edit"
+        expect(page.current_path).to include('/movies')
       end
 
-      it 'lets a user edit their own tweet if they are logged in' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "tweeting!", :user_id => 1)
+      it 'lets a user edit their own movie if they are logged in' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "The Blair Witch Project", :user_id => 1)
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit '/tweets/1/edit'
+        visit "/movies/#{movie.slug}/edit"
 
-        fill_in(:content, :with => "i love tweeting")
+        fill_in(:title, :with => "Ghostbusters 2")
 
         click_button 'submit'
-        expect(Tweet.find_by(:content => "i love tweeting")).to be_instance_of(Tweet)
-        expect(Tweet.find_by(:content => "tweeting!")).to eq(nil)
+        expect(Movie.find_by(:title => "Ghostbusters 2")).to be_instance_of(Movie)
+        expect(Movie.find_by(:content => "The Blair Witch Project")).to eq(nil)
         expect(page.status_code).to eq(200)
       end
 
-      it 'does not let a user edit a text with blank content' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "tweeting!", :user_id => 1)
+      it 'does not let a user edit a movie with blank content' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "Ghostbusters", :user_id => 1)
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit '/tweets/1/edit'
+        visit "/movies/#{movie.slug}/edit"
 
-        fill_in(:content, :with => "")
+        fill_in(:title, :with => "")
 
         click_button 'submit'
-        expect(Tweet.find_by(:content => "i love tweeting")).to be(nil)
-        expect(page.current_path).to eq("/tweets/1/edit")
+        expect(Movie.find_by(:title => "")).to be(nil)
+        expect(page.current_path).to eq("/movies/#{movie.slug}/edit")
       end
     end
 
     context "logged out" do
-      it 'does not load let user view tweet edit form if not logged in' do
-        get '/tweets/1/edit'
+      it 'does not load let user view movie edit form if not logged in' do
+        get  "/movies/#{movie.slug}/edit"
         expect(last_response.location).to include("/login")
       end
     end
@@ -350,44 +350,44 @@ describe ApplicationController do
 
   describe 'delete action' do
     context "logged in" do
-      it 'lets a user delete their own tweet if they are logged in' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "tweeting!", :user_id => 1)
+      it 'lets a user delete their own movie if they are logged in' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "Ghostbusters", :user_id => 1)
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit 'tweets/1'
+        visit "/movies/#{movie.slug}"
         click_button "Delete Tweet"
         expect(page.status_code).to eq(200)
-        expect(Tweet.find_by(:content => "tweeting!")).to eq(nil)
+        expect(Movie.find_by(:content => "Ghostbusters!")).to eq(nil)
       end
 
-      it 'does not let a user delete a tweet they did not create' do
-        user1 = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet1 = Tweet.create(:content => "tweeting!", :user_id => user1.id)
+      it 'does not let a user delete a movie they did not create' do
+        user1 = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie1 = Movie.create(:title => "Ghostbusters", :user_id => user1.id)
 
-        user2 = User.create(:username => "silverstallion", :email => "silver@aol.com", :password => "horses")
-        tweet2 = Tweet.create(:content => "look at this tweet", :user_id => user2.id)
+        user2 = User.create(:email => "silver@aol.com", :password => "horses")
+        movie2 = Movie.create(:title => "The Blair Witch Project", :user_id => user2.id)
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit "tweets/#{tweet2.id}"
-        click_button "Delete Tweet"
+        visit "/movies/#{movie2.slug}"
+        click_button "Delete Movie"
         expect(page.status_code).to eq(200)
-        expect(Tweet.find_by(:content => "look at this tweet")).to be_instance_of(Tweet)
-        expect(page.current_path).to include('/tweets')
+        expect(Movie.find_by(:content => "The Blair Witch Project")).to be_instance_of(Movie)
+        expect(page.current_path).to include('/movies')
       end
     end
 
     context "logged out" do
-      it 'does not load let user delete a tweet if not logged in' do
-        tweet = Tweet.create(:content => "tweeting!", :user_id => 1)
-        visit '/tweets/1'
+      it 'does not load let user delete a movie if not logged in' do
+        movie = Movie.create(:title => "Ghostbusters", :user_id => 1)
+        visit "/movies/#{movie.slug}"
         expect(page.current_path).to eq("/login")
       end
     end
