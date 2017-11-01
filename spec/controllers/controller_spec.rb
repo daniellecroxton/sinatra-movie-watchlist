@@ -273,17 +273,17 @@ describe ApplicationController do
 
   describe 'edit action' do
     context "logged in" do
-      it 'lets a user view tweet edit form if they are logged in' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        tweet = Tweet.create(:content => "tweeting!", :user_id => user.id)
+      it 'lets a user view movie edit form if they are logged in' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        movie = Movie.create(:title => "The Addams Family", :user_id => user.id)
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit '/tweets/1/edit'
+        visit "/movies/#{movie.slug}/edit"
         expect(page.status_code).to eq(200)
-        expect(page.body).to include(tweet.content)
+        expect(page.body).to include(movie.title)
       end
 
       it 'does not let a user edit a tweet they did not create' do
