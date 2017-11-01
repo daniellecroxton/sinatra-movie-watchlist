@@ -149,8 +149,8 @@ describe ApplicationController do
     end
 
     context 'logged out' do
-      it 'does not let a user view the tweets index if not logged in' do
-        get '/tweets'
+      it 'does not let a user view the movies index if not logged in' do
+        get '/movies'
         expect(last_response.location).to include("/login")
       end
     end
@@ -158,59 +158,59 @@ describe ApplicationController do
 
   describe 'new action' do
     context 'logged in' do
-      it 'lets user view new tweet form if logged in' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
+      it 'lets user view new movie form if logged in' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
-        visit '/tweets/new'
+        visit '/movies/new'
         expect(page.status_code).to eq(200)
       end
 
       it 'lets user create a tweet if they are logged in' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
 
-        visit '/tweets/new'
-        fill_in(:content, :with => "tweet!!!")
+        visit '/movies/new'
+        fill_in(:title, :with => "Scream")
         click_button 'submit'
 
-        user = User.find_by(:username => "becky567")
-        tweet = Tweet.find_by(:content => "tweet!!!")
-        expect(tweet).to be_instance_of(Tweet)
-        expect(tweet.user_id).to eq(user.id)
+        user = User.find_by(:email => "starz@aol.com")
+        movie = Movie.find_by(:title => "Scream")
+        expect(movie).to be_instance_of(Movie)
+        expect(movie.user_id).to eq(user.id)
         expect(page.status_code).to eq(200)
       end
 
-      it 'does not let a user tweet from another user' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
-        user2 = User.create(:username => "silverstallion", :email => "silver@aol.com", :password => "horses")
+      it 'does not let a user add a movie to the watchlist of another user' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
+        user2 = User.create(:email => "silver@aol.com", :password => "horses")
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
 
-        visit '/tweets/new'
+        visit '/movies/new'
 
-        fill_in(:content, :with => "tweet!!!")
+        fill_in(:title, :with => "Scream")
         click_button 'submit'
 
         user = User.find_by(:id=> user.id)
         user2 = User.find_by(:id => user2.id)
-        tweet = Tweet.find_by(:content => "tweet!!!")
-        expect(tweet).to be_instance_of(Tweet)
-        expect(tweet.user_id).to eq(user.id)
-        expect(tweet.user_id).not_to eq(user2.id)
+        movie = Movie.find_by(:title => "Scream")
+        expect(movie).to be_instance_of(Movie)
+        expect(movie.user_id).to eq(user.id)
+        expect(movie.user_id).not_to eq(user2.id)
       end
 
       it 'does not let a user create a blank tweet' do
