@@ -6,7 +6,7 @@ describe "Movie" do
 
   end
   it "can be initialized" do
-    expect(@movie).to be_an_instance_of(movie)
+    expect(@movie).to be_an_instance_of(Movie)
   end
 
   it "can have a title" do
@@ -21,7 +21,7 @@ describe "Movie" do
   describe "Class methods" do
     it "given the slug can find an movie" do
       slug = "its-the-great-pumpkin-charlie-brown"
-      expect((movie.find_by_slug(slug)).title).to eq("It's the Great Pumpkin, Charlie Brown")
+      expect((Movie.find_by_slug(slug)).title).to eq("It's the Great Pumpkin, Charlie Brown")
     end
   end
 
