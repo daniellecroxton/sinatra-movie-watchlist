@@ -213,28 +213,28 @@ describe ApplicationController do
         expect(movie.user_id).not_to eq(user2.id)
       end
 
-      it 'does not let a user create a blank tweet' do
-        user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
+      it 'does not let a user create a blank movie' do
+        user = User.create(:email => "starz@aol.com", :password => "kittens")
 
         visit '/login'
 
-        fill_in(:username, :with => "becky567")
+        fill_in(:email, :with => "starz@aol.com")
         fill_in(:password, :with => "kittens")
         click_button 'submit'
 
-        visit '/tweets/new'
+        visit '/movies/new'
 
-        fill_in(:content, :with => "")
+        fill_in(:title, :with => "")
         click_button 'submit'
 
-        expect(Tweet.find_by(:content => "")).to eq(nil)
-        expect(page.current_path).to eq("/tweets/new")
+        expect(Movie.find_by(:content => "")).to eq(nil)
+        expect(page.current_path).to eq("/movies/new")
       end
     end
 
     context 'logged out' do
-      it 'does not let user view new tweet form if not logged in' do
-        get '/tweets/new'
+      it 'does not let user view new movie form if not logged in' do
+        get '/movies/new'
         expect(last_response.location).to include("/login")
       end
     end
