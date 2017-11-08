@@ -6,9 +6,13 @@
 }
 
 /*////////// GLOBAL //////////*/
-* {
+body {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
+  width: 960px;
+  margin: 3em 3em;
+  background: #fff;
+  padding: 0 45px 20px;
 }
 
 h1 {
@@ -27,4 +31,21 @@ p {
   color: #555555;
   font-size: 1rem;
   margin: 0 0 20px 0;
+}
+
+button {
+    background-color: #3a3b3d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: .75rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+button:hover {
+  background-color: #68696d;
+  cursor: pointer;
 }
