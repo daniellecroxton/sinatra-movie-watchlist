@@ -254,6 +254,7 @@ describe ApplicationController do
         expect(page.body).to include("Delete Movie")
         expect(page.body).to include(movie.title)
         expect(page.body).to include("Edit Movie")
+        expect(page.body).to include("Back to All Movies")
       end
     end
 
