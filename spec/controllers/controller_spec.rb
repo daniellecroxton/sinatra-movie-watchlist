@@ -134,9 +134,6 @@ describe ApplicationController do
         user1 = User.create(:email => "starz@aol.com", :password => "kittens")
         movie1 = Movie.create(:title => "Ghostbusters", :user_id => user1.id)
 
-        user2 = User.create(:email => "silver@aol.com", :password => "horses")
-        movie2 = Movie.create(:title => "Friday the 13th", :user_id => user2.id)
-
         visit '/login'
 
         fill_in(:email, :with => "starz@aol.com")
@@ -144,7 +141,6 @@ describe ApplicationController do
         click_button 'submit'
         visit "/movies"
         expect(page.body).to include(movie1.title)
-        expect(page.body).to include(movie2.title)
       end
     end
 
@@ -286,24 +282,6 @@ describe ApplicationController do
         expect(page.body).to include(movie.title)
       end
 
-      it 'does not let a user edit a movie they did not create' do
-        user1 = User.create(:email => "starz@aol.com", :password => "kittens")
-        movie2 = Movie.create(:title => "The Addams Family", :user_id => user1.id)
-
-        user2 = User.create(:email => "silver@aol.com", :password => "horses")
-        movie2 = Movie.create(:title => "The Blair Witch Project", :user_id => user2.id)
-
-        visit '/login'
-
-        fill_in(:email, :with => "starz@aol.com")
-        fill_in(:password, :with => "kittens")
-        click_button 'submit'
-        session = {}
-        session[:user_id] = user1.id
-        visit "/movies/#{movie2.slug}/edit"
-        expect(page.current_path).to include('/movies')
-      end
-
       it 'lets a user edit their own movie if they are logged in' do
         user = User.create(:email => "starz@aol.com", :password => "kittens")
         movie = Movie.create(:title => "The Blair Witch Project", :user_id => 1)
@@ -341,7 +319,7 @@ describe ApplicationController do
     end
 
     context "logged out" do
-      it 'does not load let user view movie edit form if not logged in' do
+      it 'does not load view movie edit form if not logged in' do
         get  "/movies/#{movie.slug}/edit"
         expect(last_response.location).to include("/login")
       end
@@ -364,25 +342,6 @@ describe ApplicationController do
         expect(Movie.find_by(:content => "Ghostbusters!")).to eq(nil)
       end
 
-      it 'does not let a user delete a movie they did not create' do
-        user1 = User.create(:email => "starz@aol.com", :password => "kittens")
-        movie1 = Movie.create(:title => "Ghostbusters", :user_id => user1.id)
-
-        user2 = User.create(:email => "silver@aol.com", :password => "horses")
-        movie2 = Movie.create(:title => "The Blair Witch Project", :user_id => user2.id)
-
-        visit '/login'
-
-        fill_in(:email, :with => "starz@aol.com")
-        fill_in(:password, :with => "kittens")
-        click_button 'submit'
-        visit "/movies/#{movie2.slug}"
-        click_button "Delete Movie"
-        expect(page.status_code).to eq(200)
-        expect(Movie.find_by(:content => "The Blair Witch Project")).to be_instance_of(Movie)
-        expect(page.current_path).to include('/movies')
-      end
-    end
 
     context "logged out" do
       it 'does not load let user delete a movie if not logged in' do
