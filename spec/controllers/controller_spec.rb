@@ -177,7 +177,7 @@ describe ApplicationController do
 
         visit '/movies/new'
         fill_in(:title, :with => "Scream")
-        click_button 'submit'
+        click_button 'create_movie'
 
         user = User.find_by(:email => "starz@aol.com")
         movie = Movie.find_by(:title => "Scream")
@@ -199,7 +199,7 @@ describe ApplicationController do
         visit '/movies/new'
 
         fill_in(:title, :with => "Scream")
-        click_button 'submit'
+        click_button 'create_movie'
 
         user = User.find_by(:id=> user.id)
         user2 = User.find_by(:id => user2.id)
@@ -221,9 +221,9 @@ describe ApplicationController do
         visit '/movies/new'
 
         fill_in(:title, :with => "")
-        click_button 'submit'
+        click_button 'create_movie'
 
-        expect(Movie.find_by(:content => "")).to eq(nil)
+        expect(Movie.find_by(:title => "")).to eq(nil)
         expect(page.current_path).to eq("/movies/new")
       end
     end
@@ -249,7 +249,7 @@ describe ApplicationController do
         fill_in(:password, :with => "kittens")
         click_button 'submit'
 
-        visit "/movies/#{movie.id}"
+        visit "/movies/#{movie.slug}"
         expect(page.status_code).to eq(200)
         expect(page.body).to include("Delete Movie")
         expect(page.body).to include(movie.title)
@@ -297,7 +297,7 @@ describe ApplicationController do
 
         click_button 'submit'
         expect(Movie.find_by(:title => "Ghostbusters 2")).to be_instance_of(Movie)
-        expect(Movie.find_by(:content => "The Blair Witch Project")).to eq(nil)
+        expect(Movie.find_by(:title => "The Blair Witch Project")).to eq(nil)
         expect(page.status_code).to eq(200)
       end
 
@@ -321,6 +321,8 @@ describe ApplicationController do
 
     context "logged out" do
       it 'does not load view movie edit form if not logged in' do
+        movie = Movie.create(:title => "Ghostbusters", :user_id => 1)
+
         get  "/movies/#{movie.slug}/edit"
         expect(last_response.location).to include("/login")
       end
@@ -340,8 +342,9 @@ describe ApplicationController do
         visit "/movies/#{movie.slug}"
         click_button "Delete Movie"
         expect(page.status_code).to eq(200)
-        expect(Movie.find_by(:content => "Ghostbusters!")).to eq(nil)
+        expect(Movie.find_by(:title => "Ghostbusters!")).to eq(nil)
       end
+    end
 
 
     context "logged out" do
@@ -352,4 +355,5 @@ describe ApplicationController do
       end
     end
   end
+
 end
