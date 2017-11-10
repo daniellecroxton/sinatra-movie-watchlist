@@ -11,13 +11,19 @@
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
+  background-color: #c3c4c4;
+}
+
+div {
   width: 960px;
+  min-height: 100vh;
   margin: 0 auto;
-  background: #fff;
   padding: 3em 3em;
+  background: #fff;
   border-left: outset;
   border-right: inset;
   border-bottom: inset;
+
 }
 
 h1 {
@@ -36,6 +42,27 @@ p {
   color: #555555;
   font-size: 1rem;
   margin: 0 0 20px 0;
+}
+
+.flash_message {
+  color: red;
+}
+
+input {
+    font-family: 'Raleway', sans-serif;
+    border: 1px solid grey;
+}
+
+textarea {
+  font-family: 'Raleway', sans-serif;
+  resize: none;
+  border: 1px solid grey;
+}
+
+select {
+  font-family: 'Raleway', sans-serif;
+  border: 1px solid grey;
+  border-radius: 0;
 }
 
 button {

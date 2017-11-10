@@ -1,6 +1,8 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+<p class="flash_message">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+</p>
 
 <h1><%= @movie.title %></h1>
 <p>Notes: <%= @movie.notes %></p>

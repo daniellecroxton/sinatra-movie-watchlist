@@ -1,9 +1,13 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+
 
 <h1>Log-in to save movies.</h1>
 <form action="/login" method="post">
+
+  <p class="flash_message">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+  </p>
 
   <p>
     Please fill in all fields and then click 'Log-in.'

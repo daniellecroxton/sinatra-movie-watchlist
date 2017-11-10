@@ -1,13 +1,17 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+
 
 <h1>Edit <%= @movie.title %></h1>
 <form method="post" action="/movies/<%=@movie.slug%>">
   <input id="hidden" type="hidden" name="_method" value="patch"></input>
 
+  <p class="flash_message">
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+  </p>
+
   <p>
-    * = Required field
+    * Required field
   </p>
   <p>
     <label for="title">Title:* </label>

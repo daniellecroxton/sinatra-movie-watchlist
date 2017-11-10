@@ -1,8 +1,11 @@
 <h1>Movies</h1>
 
+<p class="flash_message">
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
+</p>
+
 
 <% if current_user.movies.empty? %>
   <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
