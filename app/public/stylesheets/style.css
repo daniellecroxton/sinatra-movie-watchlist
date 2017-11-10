@@ -10,26 +10,24 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  background-color: #c3c4c4;
+  font-size: 15px;
+  border: 20px solid #AAA;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-div {
-  width: 960px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 3em 3em;
-  background: #fff;
-  border-left: outset;
-  border-right: inset;
-  border-bottom: inset;
-
+.container {
+  grid-template-columns: 100px 1fr 2fr 1fr 100px;
+  grid-template-rows: 100px 20% auto 100px;
 }
 
 h1 {
   padding-bottom: 10px;
   margin: 0 0 5px;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: light;
 }
 
@@ -40,7 +38,7 @@ h2 {
 
 p {
   color: #555555;
-  font-size: 1rem;
+  font-size: 1.25rem;
   margin: 0 0 20px 0;
 }
 
@@ -48,8 +46,48 @@ p {
   color: red;
 }
 
+.user-container {
+  background: url(../images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+/*
+  background-image: url("/app/public/images/background.jpg");
+  background: #3ab3ab;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100%;*/
+}
+
+.user-container, h1, h2, p, a {
+  color: #fff;
+}
+
+.user-content {
+  margin: 0 auto;
+  padding-top: 15%;
+  color: #fff;
+  text-align: center;
+}
+
+.user-content, input, button {
+  height: 60px;
+  width: 300px;
+}
+
+.user-content, input[placeholder] {
+  color: #aaa;
+  text-align: center;
+}
+
 label, input, textarea, select {
     display: block;
+    margin: 10px;
 }
 
 label {
@@ -88,7 +126,7 @@ select {
 }
 
 button {
-    background-color: #3a3b3d;
+    background-color: #000;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -99,6 +137,7 @@ button {
     font-family: 'Raleway', sans-serif;
     float: left;
     margin: 10px;
+    size: 500px;
 }
 
 button:hover {
