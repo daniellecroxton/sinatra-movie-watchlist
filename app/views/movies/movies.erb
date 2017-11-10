@@ -13,9 +13,21 @@
   <p>
     Genre:
   </p>
-    <!-- <form>
-
-    </form> -->
+    <form action="/movies?page=<%= genre %>&status=<%= status %>" method=”post”>
+      <select>
+          <option value="All">All</option>
+          <option value="Action">Action</option>
+          <option value="Adventure"> Adventure</option>
+          <option value="Comedy"> Comedy</option>
+          <option value="Documentary"> Documentary</option>
+          <option value="Drama"> Drama</option>
+          <option value="Horror"> Horror</option>
+          <option value="Musical"> Musical</option>
+          <option value="Romantic Comedy"> Romantic Comedy</option>
+          <option value="Suspense"> Suspense</option>
+        </select>
+      <input type=”submit”>
+    </form>
   <ul><% current_user.movies.each do |movie| %>
   <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
   <% end %></ul>
