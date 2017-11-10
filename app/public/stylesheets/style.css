@@ -48,9 +48,22 @@ p {
   color: red;
 }
 
+label, input, textarea, select {
+    display: block;
+}
+
+label {
+  padding: 0;
+  margin-bottom: -1em;
+}
+
 input {
     font-family: 'Raleway', sans-serif;
     border: 1px solid grey;
+}
+
+input[type="radio"] {
+  float: left
 }
 
 textarea {
