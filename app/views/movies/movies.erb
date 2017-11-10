@@ -10,7 +10,12 @@
 <% if current_user.movies.empty? %>
   <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
 <% else %>
-  <p><a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
+  <p>
+    Genre:
+  </p>
+    <!-- <form>
+
+    </form> -->
   <ul><% current_user.movies.each do |movie| %>
   <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
   <% end %></ul>
