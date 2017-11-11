@@ -4,6 +4,8 @@ class MoviesController < ApplicationController
   get '/movies' do
     if logged_in?
       @user = current_user
+        genre = params['genre']
+        status = params['watched']
       erb :'movies/movies'
     else
       redirect '/login'
