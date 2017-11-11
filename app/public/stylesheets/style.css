@@ -58,11 +58,10 @@ button {
   -o-background-size: cover;
   background-size: cover;
   min-height: 100vh;
-  /*display: flex;
-  flex-direction: column;*/
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .user-container h1, h2, h3, p, a, button, a:visited {
@@ -138,7 +137,7 @@ button {
   grid-row: 3 / span 1;
 }
 
-.movie-content h1, label {
+.movie-content h1, label, input[radio] {
   color: #000;
 }
 
