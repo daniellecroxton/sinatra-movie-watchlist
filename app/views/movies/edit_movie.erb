@@ -1,6 +1,25 @@
+<div class="movie-container">
 
+<div class="header">
+   <div class="logo">
+     <h2><a href="/movies">A-List</a></h2>
+   </div>
+   <div class="logout">
+     <h2><a href="/logout">Logout</a></h2>
+   </div>
+</div>
 
+<div class="movie-sidebar">
 <h1>Edit <%= @movie.title %></h1>
+</div>
+
+<div class="separator">
+
+</div>
+
+<div class="movie-content">
+
+
 <form method="post" action="/movies/<%=@movie.slug%>">
   <input id="hidden" type="hidden" name="_method" value="patch"></input>
 
@@ -62,5 +81,10 @@
 </form>
 
 <form action="/movies" method="get">
-  <button type="submit" value="Cancel">Cancel</button>
+  <button class="grey" type="submit" value="Cancel">Cancel</button>
 </form>
+
+
+</div>
+
+</div>

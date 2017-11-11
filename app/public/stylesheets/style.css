@@ -15,10 +15,14 @@ body {
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
 }
 
 .flash_message {
-  color: red;
+  color: #FFF;
+  font-weight: bold;
 }
 
 h1 {
@@ -48,12 +52,6 @@ button {
 
 /*////////// USER PAGES //////////*/
 
-
-/*.container {
-  grid-template-columns: 100px 1fr 2fr 1fr 100px;
-  grid-template-rows: 100px 20% auto 100px;
-}*/
-
 .user-container {
   background: url(../images/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -61,8 +59,11 @@ button {
   -o-background-size: cover;
   background-size: cover;
   min-height: 100vh;
+  /*display: flex;
+  flex-direction: column;*/
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .user-container h1, h2, h3, p, a, button {
@@ -72,7 +73,6 @@ button {
 .user-content {
   margin: 0 auto;
   padding-top: 15%;
-  /*color: #fff;*/
   text-align: center;
 }
 
@@ -93,6 +93,81 @@ button {
   cursor: pointer;
 }
 
+/*////////// MOVIE PAGES //////////*/
+
+
+.movie-container {
+  display: grid;
+  grid-template-columns: 100px 1fr 30px 70px 2fr 100px;
+  grid-template-rows: 100px 250px auto 100px;
+}
+
+.movie-container button:hover, a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.header {
+  grid-column: 2 / span 4;
+  grid-row: 2; / span 1;
+}
+
+.header a {
+  color: #AAA;
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  float: left;
+}
+
+.logout {
+  float: right;
+}
+
+.movie-sidebar {
+  grid-column: 2 / span 1;
+  grid-row: 3; / span 1;
+}
+
+.movie-content {
+  grid-column: 5 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.separator {
+  grid-column: 4 / span 1;
+  grid-row: 3 / span 1;
+  border-left: 1px solid #AAA;
+}
+
+.movie-content h1, label, a {
+  color: #000;
+}
+
+.movie-content p {
+  color: #AAA;
+}
+
+.movie-content a {
+  line-height: 2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+button {
+  background-color: #000;
+  margin-bottom: 10px;
+}
+
+.grey {
+  margin-top: 0;
+  background-color: #AAA;
+}
 /*.user-content, input[placeholder] {
   color: #AAA;
   text-align: center;

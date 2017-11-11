@@ -1,13 +1,35 @@
-<p class="flash_message">
-  <% if flash.has?(:message) %>
-    <%= flash[:message] %>
-  <% end %>
-</p>
+<div class="movie-container">
+
+<div class="header">
+   <div class="logo">
+     <h2><a href="/movies">A-List</a></h2>
+   </div>
+   <div class="logout">
+     <h2><a href="/logout">Logout</a></h2>
+   </div>
+</div>
+
+<div class="movie-sidebar">
 
 <h1><%= @movie.title %></h1>
-<p>Notes: <%= @movie.notes %></p>
-<p>Genre: <%= @movie.genre%></p>
-<p>Status: <% if @movie.watched == 1 %>
+
+</div>
+
+<div class="separator">
+
+</div>
+
+<div class="movie-content">
+
+  <p class="flash_message">
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+  </p>
+
+<p><%= @movie.notes %></p>
+<p><%= @movie.genre %></p>
+<p><% if @movie.watched == 1 %>
     <%= "Watched"%>
   <% else %>
     <%= "Unwatched"%>
@@ -20,15 +42,11 @@
 
 <form action="/movies/<%= @movie.slug %>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <p><button type="submit" value="Delete Movie">Delete Movie</button></p>
+  <p><button class="grey" type="submit" value="Delete Movie">Delete Movie</button></p>
 </form>
 
-<form action="/movies" method="get">
-  <p><button type="submit" value="Back to All Movies">Back to All Movies</button></p>
-</form>
 
-<p></p>
 
-<form action="/logout" method="get">
-  <p><button type="submit" value="Logout">Logout</button></p>
-</form>
+</div>
+
+</div>

@@ -1,42 +1,50 @@
-<h1>Movies</h1>
+<div class="movie-container">
 
-<p class="flash_message">
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-</p>
+<div class="header">
+   <div class="logo">
+     <h2><a href="/movies">A-List</a></h2>
+   </div>
+   <div class="logout">
+     <h2><a href="/logout">Logout</a></h2>
+   </div>
+</div>
 
 
-<% if current_user.movies.empty? %>
-  <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
-<% else %>
-  <p>
-    Genre:
-  </p>
-    <form action="/movies?page=<%= genre %>&status=<%= status %>" method=”post”>
-      <select>
-          <option value="All">All</option>
-          <option value="Action">Action</option>
-          <option value="Adventure"> Adventure</option>
-          <option value="Comedy"> Comedy</option>
-          <option value="Documentary"> Documentary</option>
-          <option value="Drama"> Drama</option>
-          <option value="Horror"> Horror</option>
-          <option value="Musical"> Musical</option>
-          <option value="Romantic Comedy"> Romantic Comedy</option>
-          <option value="Suspense"> Suspense</option>
-        </select>
-      <input type=”submit”>
+  <div class="movie-sidebar">
+
+  <h1>Your movies</h1>
+
+</div>
+
+<div class="separator">
+
+</div>
+
+  <div class="movie-content">
+
+    <p class="flash_message">
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+    </p>
+
+    <form action="/movies/new" method="get">
+      <p><button type="submit" value="Add Movie">Add Movie</button></p>
     </form>
-  <ul><% current_user.movies.each do |movie| %>
-  <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
-  <% end %></ul>
-<% end %>
 
-<form action="/movies/new" method="get">
-  <p><button type="submit" value="Add Movie">Add Movie</button></p>
-</form>
 
-<form action="/logout" method="get">
-  <p><button type="submit" value="Logout">Logout</button></p>
-</form>
+    <% if current_user.movies.empty? %>
+      <p> You have no movies saved yet. <a href="/movies/new">Click here</a> to add a movie to your watchlist. </p>
+    <% else %>
+
+      <ul style="list-style: none;"><% current_user.movies.each do |movie| %>
+      <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
+      <% end %></ul>
+    <% end %>
+
+
+
+
+</div>
+
+</div>
