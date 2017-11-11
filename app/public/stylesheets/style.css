@@ -15,36 +15,42 @@ body {
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  grid-template-columns: 100px 1fr 2fr 1fr 100px;
-  grid-template-rows: 100px 20% auto 100px;
-}
-
-h1 {
-  padding-bottom: 10px;
-  margin: 0 0 5px;
-  font-size: 2rem;
-  font-weight: light;
-}
-
-h2 {
-  color: #6F7F7A;
-  font-size: 1.25rem;
-}
-
-p {
-  color: #555555;
-  font-size: 1.25rem;
-  margin: 0 0 20px 0;
 }
 
 .flash_message {
   color: red;
 }
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+button {
+  height: 60px;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+}
+
+/*////////// USER PAGES //////////*/
+
+
+/*.container {
+  grid-template-columns: 100px 1fr 2fr 1fr 100px;
+  grid-template-rows: 100px 20% auto 100px;
+}*/
 
 .user-container {
   background: url(../images/background.jpg) no-repeat center center fixed;
@@ -55,18 +61,11 @@ p {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-/*
-  background-image: url("/app/public/images/background.jpg");
-  background: #3ab3ab;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  min-height: 100%;*/
 }
 
-.user-container, h1, h2, p, a {
+/*.user-container, h1, h2, p, a, button {
   color: #fff;
-}
+}*/
 
 .user-content {
   margin: 0 auto;
@@ -75,16 +74,27 @@ p {
   text-align: center;
 }
 
-.user-content, input, button {
+.user-content, input {
   height: 60px;
   width: 300px;
-}
-
-.user-content, input[placeholder] {
-  color: #aaa;
+  color: #AAA;
   text-align: center;
 }
 
+.user-content, button {
+  color: #000;
+}
+
+.user-content, button:hover, a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*.user-content, input[placeholder] {
+  color: #aaa;
+  text-align: center;
+}*/
+/*
 label, input, textarea, select {
     display: block;
     margin: 10px;
@@ -93,8 +103,8 @@ label, input, textarea, select {
 label {
   padding: 0;
   margin-bottom: -1em;
-}
-
+}*/
+/*
 input:focus, textarea:focus {
   border: 1px solid #000;
 }
@@ -117,9 +127,9 @@ textarea {
   font-family: 'Raleway', sans-serif;
   resize: none;
   border: 1px solid #AAA;
-}
+}*/
 
-select {
+/*select {
   font-family: 'Raleway', sans-serif;
   border: 1px solid grey;
   border-radius: 0;
@@ -143,4 +153,4 @@ button {
 button:hover {
   text-decoration: underline;
   cursor: pointer;
-}
+}*/
