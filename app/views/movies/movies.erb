@@ -14,10 +14,10 @@
 
   <h1>Your movies</h1>
 
-  <p><label for="genre">Genre:</label>
+  <p><label for="selected_genre">Genre:</label>
 </p>
-  <form action="/movies?genre=<%= genre %>&status=<%= watched %>" method=”post”>
-    <select name="genre" id="genre">
+  <form action="/movies?genre=<%= @selected_genre %>&status=<%= @selected_status %>" method=”post”>
+    <select name="selected_genre" id="selected_genre">
         <option value="All">All</option>
         <option value="Action">Action</option>
         <option value="Adventure"> Adventure</option>
@@ -31,12 +31,15 @@
       </select>
 
       <p>
-        <label for="watched">Status</label>
+        <label for="selected_status">Status:</label>
         </p><p>
-        <input type="radio" name="watched" id="watched1" value="1" required>Watched<br>
-        <input type="radio" name="watched" id="watched0" value="0" checked>Unwatched<br>
+          <select name="selected_status" id="selected_status">
+            <option value="All">All</option>
+            <option value="Watched">Watched</option>
+            <option value="Unwatched">Unwatched</option>
+          </select>
       </p>
-    <input type=”submit”>
+    <button type=”submit” value="Submit">Submit</button>
   </form>
 
 
@@ -57,10 +60,17 @@
 
     <% if current_user.movies.empty? %>
       <p> You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist. </p>
-    <% else %>
 
+    <% else %>
+    <!-- <% elsif @selected_genre == "All" %> -->
       <ul style="list-style: none;"><% current_user.movies.each do |movie| %>
-      <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
+        <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li>
+        <% end %></ul>
+
+    <!-- <% else %>
+      <ul style="list-style: none;"><% current_user.movies.each do |movie| %>
+      <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li> <% if @selected_genre == movie.genre %>
+      <% end %> -->
       <% end %></ul>
     <% end %>
 

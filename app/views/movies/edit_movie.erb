@@ -44,7 +44,7 @@
   <p>
     <label for="genre">Genre:* </label>
     </p><p>
-      <select required>
+      <select  id="genre" name="genre" required>
           <option value="Action" <%=selected="selected" if @movie.genre == "Action" %>>Action</option>
           <option value="Adventure" <%=selected="selected" if @movie.genre == "Adventure" %>> Adventure</option>
           <option value="Comedy" <%=selected="selected" if @movie.genre == "Comedy" %>> Comedy</option>
