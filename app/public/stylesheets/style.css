@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 100px;
 }
 
 .flash_message {
@@ -66,7 +65,7 @@ button {
   flex-grow: 1;
 }
 
-.user-container h1, h2, h3, p, a, button {
+.user-container h1, h2, h3, p, a, button, a:visited {
   color: #fff;
 }
 
@@ -99,7 +98,7 @@ button {
 .movie-container {
   display: grid;
   grid-template-columns: 100px 1fr 30px 70px 2fr 100px;
-  grid-template-rows: 100px 250px auto 100px;
+  grid-template-rows: 50px 250px auto 100px;
 }
 
 .movie-container button:hover, a:hover {
@@ -109,7 +108,7 @@ button {
 
 .header {
   grid-column: 2 / span 4;
-  grid-row: 2; / span 1;
+  grid-row: 2 / span 1;
 }
 
 .header a {
@@ -139,13 +138,7 @@ button {
   grid-row: 3 / span 1;
 }
 
-.separator {
-  grid-column: 4 / span 1;
-  grid-row: 3 / span 1;
-  border-left: 1px solid #AAA;
-}
-
-.movie-content h1, label, a {
+.movie-content h1, label {
   color: #000;
 }
 
@@ -154,6 +147,7 @@ button {
 }
 
 .movie-content a {
+  color: #000;
   line-height: 2;
   text-decoration: none;
   font-weight: bold;
