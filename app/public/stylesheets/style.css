@@ -26,15 +26,15 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: .75rem;
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 button {
@@ -42,6 +42,8 @@ button {
   width: 300px;
   margin: 10px;
   text-align: center;
+  border: 0;
+  font-size: 1rem;
 }
 
 /*////////// USER PAGES //////////*/
@@ -63,36 +65,38 @@ button {
   flex-direction: column;
 }
 
-/*.user-container, h1, h2, p, a, button {
+.user-container h1, h2, h3, p, a, button {
   color: #fff;
-}*/
+}
 
 .user-content {
   margin: 0 auto;
   padding-top: 15%;
-  color: #fff;
+  /*color: #fff;*/
   text-align: center;
 }
 
-.user-content, input {
+.user-content input {
   height: 60px;
   width: 300px;
   color: #AAA;
   text-align: center;
+  font-size: 1rem;
 }
 
-.user-content, button {
-  color: #000;
+.user-content button {
+  background-color: #000;
 }
 
-.user-content, button:hover, a:hover {
+.user-content button:hover, a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
 /*.user-content, input[placeholder] {
-  color: #aaa;
+  color: #AAA;
   text-align: center;
+  text-size: 1rem;
 }*/
 /*
 label, input, textarea, select {
