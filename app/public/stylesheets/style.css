@@ -17,6 +17,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   line-height: 100%;
 }
 
@@ -67,14 +68,21 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  box-sizing: border-box;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  box-sizing: border-box;
   margin: 0 auto;
-  padding-top: 150px;
   text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  -ms-box-sizing:     border-box;
+  -o-box-sizing:      border-box;
+}
+
+.user-container h1 {
+  padding-top: 150px;
 }
 
 .user-container h1, h2, h3, p, a, button, a:visited {
