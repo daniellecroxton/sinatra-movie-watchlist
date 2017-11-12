@@ -22,19 +22,19 @@
 <form method="post" action="/movies">
 
   <p>
-    <label for="title">Title:* </label>
+    <label for="title">Title* </label>
   </p><p>
     <input type="text" id="title" name="title" required  />
   </p>
 
   <p>
-    <label for="notes">Notes: </label>
+    <label for="notes">Notes </label>
     </p><p>
     <textarea id="notes" name="notes" rows="10" cols="30"></textarea>
   </p>
 
   <p>
-    <label for="genre">Genre:* </label>
+    <label for="genre">Genre* </label>
     </p><p>
       <select id="genre" name="genre" required>
           <option value="Action">Action</option>
@@ -61,8 +61,8 @@
   <p>
     <label for="watched">Have you seen it?* </label>
   </p><p>
-    <input type="radio" name="watched" id="watched1" value="1" required> Yes<br>
-    <input type="radio" name="watched" id="watched0" value="0" checked> No<br>
+    <input class="radio" type="radio" name="watched" id="watched1" value="1" required> Yes<br>
+    <input class="radio" type="radio" name="watched" id="watched0" value="0" checked> No<br>
   </p>
 
   <button type="submit" id="create_movie">Create Movie</button>

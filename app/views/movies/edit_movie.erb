@@ -31,19 +31,19 @@
 
 
   <p>
-    <label for="title">Title:* </label>
+    <label for="title">Title* </label>
   </p><p>
     <input type="text" id="title" name="title" value="<%= @movie.title %>" required  />
   </p>
 
   <p>
-    <label for="notes">Notes: </label>
+    <label for="notes">Notes </label>
     </p><p>
     <textarea id="notes" name="notes" rows="10" cols="30"><%= @movie.notes %></textarea>
   </p>
 
   <p>
-    <label for="genre">Genre:* </label>
+    <label for="genre">Genre* </label>
     </p><p>
       <select  id="genre" name="genre" required>
           <option value="Action" <%=selected="selected" if @movie.genre == "Action" %>>Action</option>
@@ -69,10 +69,11 @@
 
   <p>
     <label for="watched">Have you seen it?* </label>
-  </p><p>
-    <input type="radio" name="watched" id="watched1" value="1" required <%='checked' if @movie.watched == 1 %>> Yes</input><br>
-    <input type="radio" name="watched" id="watched0" value="0" <%='checked' if @movie.watched == 0 %>>  No</input><br>
   </p>
+  <p>
+    <input class="radio" type="radio" name="watched" id="watched1" value="1" required <%='checked' if @movie.watched == 1 %>> Yes</input><br>
+    <input  class="radio" type="radio" name="watched" id="watched0" value="0" <%='checked' if @movie.watched == 0 %>>  No</input><br>
+    </p>
 
   <button class="top" type="submit" id="submit">Save Movie</button>
 

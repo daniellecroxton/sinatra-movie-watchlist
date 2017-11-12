@@ -44,11 +44,20 @@ p {
 button {
   height: 60px;
   width: 300px;
-  margin: 10px;
   text-align: center;
   border: 0;
-  font-size: 1rem;
+  font-size: .9rem;
 }
+
+input[type="text"] {
+  height: 60px;
+  width: 300px;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 
 /*////////// USER PAGES //////////*/
 
@@ -82,11 +91,17 @@ button {
   color: #AAA;
   text-align: center;
   font-size: 1rem;
+  border: 0;
 }
 
 .user-content button {
   background-color: #000;
-  margin-bottom: 40px;
+  margin: 5px;
+}
+
+.user-content a {
+  margin-top: 20px;
+  text-decoration: none;
 }
 
 .user-content button:hover, a:hover {
@@ -141,26 +156,26 @@ button {
   grid-row: 3 / span 1;
 }
 
-.movie-content h1, label, input[type="radio"], option, select {
+.movie-content h1, label, input, option, select, p, textarea {
   font-family: 'Raleway', sans-serif;
   color: #000;
 }
 
 .movie-content input[type="text"], textarea, option, select {
-  width: 200px;
+  width: 500px;
   border: 1px solid #AAA;
   margin: 0 0 10px 0;
 }
 
 .movie-content input[type="text"], select {
-  height: 25px;
+  height: 35px;
 }
 
 .movie-content input[type="text"]:focus, textarea:focus, option:focus, select:focus {
   border: 1px solid #000;
 }
 
-.movie-content p, h3 {
+.movie-content h3 {
   color: #AAA;
 }
 
@@ -171,84 +186,26 @@ button {
   font-weight: bold;
 }
 
-button {
+.movie-content button {
   background-color: #000;
   margin-bottom: 10px;
   font-family: 'Raleway', sans-serif;
 
 }
 
-.grey {
+.movie-content input[type="radio"] {
+  margin-bottom: 15px;
+}
+
+.movie-content .grey {
   margin-top: 0;
   background-color: #AAA;
 }
 
-.top {
-  margin-top: 50px;
+.movie-content .top {
+  margin-top: 35px;
 }
 
-/*.user-content, input[placeholder] {
-  color: #AAA;
-  text-align: center;
-  text-size: 1rem;
-}*/
-/*
-label, input, textarea, select {
-    display: block;
-    margin: 10px;
+.movie-content .info {
+  margin-top: 45px;
 }
-
-label {
-  padding: 0;
-  margin-bottom: -1em;
-}*/
-/*
-input:focus, textarea:focus {
-  border: 1px solid #000;
-}
-
-input {
-    font-family: 'Raleway', sans-serif;
-    border: 1px solid #AAA;
-}
-
-input[type="text"] {
-  width: 500px;
-}
-
-input[type="radio"] {
-  float: left
-}
-
-textarea {
-  width: 500px;
-  font-family: 'Raleway', sans-serif;
-  resize: none;
-  border: 1px solid #AAA;
-}*/
-
-/*select {
-  font-family: 'Raleway', sans-serif;
-  border: 1px solid grey;
-  border-radius: 0;
-}
-
-button {
-    background-color: #000;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: .75rem;
-    font-family: 'Raleway', sans-serif;
-    float: left;
-    margin: 10px;
-    size: 500px;
-}
-
-button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}*/

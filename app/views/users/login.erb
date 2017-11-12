@@ -1,14 +1,13 @@
 <div class="user-container">
     <h1>A-List</h1>
+    <p class="flash_message">
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
+    </p>
 
     <div class="user-content">
       <form action="/login" method="post">
-
-        <p class="flash_message">
-        <% if flash.has?(:message) %>
-          <%= flash[:message] %>
-        <% end %>
-        </p>
 
         <p>
           <label for="email"/>
