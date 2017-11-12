@@ -78,7 +78,6 @@
         You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist.
       </p>
 
-      <!-- <% else %> -->
       <% elsif @selected_genre == "All" %>
         <ul style="list-style: none;">
           <% @user.movies.each do |movie| %>
@@ -97,9 +96,9 @@
               </a>
             </li>
           <% end %>
+                 <% end %>
         </ul>
       <% end %>
-
     </div>
 
   </div>
