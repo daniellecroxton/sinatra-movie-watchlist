@@ -4,10 +4,10 @@ class MoviesController < ApplicationController
   get '/movies' do
     if logged_in?
       @user = current_user
-      @movies = current_user.movies.find(:all, :conditions => [movie.genre == @selected_genre])
+      @movies = current_user.movies
         @selected_genre = params['selected_genre']
         @selected_status = params['selected_status']
-        @movies = current_user.movies.all(genre == @selected_genre)
+        # @movies = current_user.movies.all(genre == @selected_genre)
 
       erb :'movies/movies'
     else

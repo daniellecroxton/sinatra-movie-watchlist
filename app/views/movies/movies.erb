@@ -73,26 +73,33 @@
       </p>
     </form>
 
-    <% if current_user.movies.empty? %>
+    <% if @user.movies.empty? %>
       <p>
         You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist.
       </p>
 
-    <% else %>
-      <!-- <% elsif @selected_genre == "All" %> -->
-      <ul style="list-style: none;">
-        <% current_user.movies.each do |movie| %>
-          <li>
-            <a href="/movies/<%= movie.slug %>"><%= movie.title %></a>
-          </li>
-        <% end %>
-      </ul>
+      <!-- <% else %> -->
+      <% elsif @selected_genre == "All" %>
+        <ul style="list-style: none;">
+          <% @user.movies.each do |movie| %>
+            <li>
+              <a href="/movies/<%= movie.slug %>"><%= movie.title %></a>
+            </li>
+          <% end %>
+        </ul>
 
-      <!-- <% else %> <ul style="list-style: none;"><% current_user.movies.each do |movie| %> <li><a href="/movies/<%= movie.slug %>"><%= movie.title %></a></li> <% if @selected_genre == movie.genre %> <% end %> -->
-    <% end %>
-</ul>
-<% end %>
+      <% else %>
+        <ul style="list-style: none;">
+          <% @user.movies.each do |movie| %>
+            <li>
+              <a href="/movies/<%= movie.slug %>"><%= movie.title %>
+                <% if @selected_genre == movie.genre %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
 
-</div>
+    </div>
 
-</div>
+  </div>
