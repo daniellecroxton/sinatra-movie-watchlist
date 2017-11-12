@@ -85,7 +85,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   padding-top: 150px;
 }
 
-.user-container h1, h2, h3, p, a, button, a:visited {
+.user-container h1, .user-container h2, .user-container h3, .user-container p, .user-container a, .user-container button, .user-container a:visited {
   color: #fff;
 }
 
@@ -112,7 +112,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   text-decoration: none;
 }
 
-.user-content button:hover, a:hover {
+.user-content button:hover, .user-content a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -127,7 +127,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   grid-template-rows: 50px 200px auto 100px;
 }
 
-.movie-container button:hover, a:hover {
+.movie-container button:hover, .movie-container a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -164,22 +164,22 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   grid-row: 3 / span 1;
 }
 
-.movie-content h1, label, input, option, select, p, textarea {
+.movie-content h1, .movie-content label, .movie-content input, .movie-content option, .movie-content select, .movie-content p, .movie-content textarea {
   font-family: 'Raleway', sans-serif;
   color: #000;
 }
 
-.movie-content input[type="text"], textarea, option, select {
+.movie-content input[type="text"], .movie-content textarea, .movie-content option, .movie-content select {
   width: 500px;
   border: 1px solid #AAA;
   margin: 0 0 10px 0;
 }
 
-.movie-content input[type="text"], select {
+.movie-content input[type="text"], .movie-content select {
   height: 35px;
 }
 
-.movie-content input[type="text"]:focus, textarea:focus, option:focus, select:focus {
+.movie-content input[type="text"]:focus, .movie-content textarea:focus, .movie-content option:focus, .movie-content select:focus {
   border: 1px solid #000;
 }
 
