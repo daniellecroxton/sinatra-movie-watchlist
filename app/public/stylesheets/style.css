@@ -10,13 +10,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
-  border: 20px solid #AAA;
   margin: 0;
-  box-sizing: border-box;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
   line-height: 100%;
 }
 
@@ -52,6 +46,23 @@ button {
 input[type="text"] {
   height: 60px;
   width: 300px;
+  font-family: 'Raleway', sans-serif;
+}
+
+input::-webkit-input-placeholder {
+  font-family: 'Raleway', sans-serif;
+}
+
+input:-moz-placeholder {
+  font-family: 'Raleway', sans-serif;
+}
+
+input::-moz-placeholder {
+  font-family: 'Raleway', sans-serif;
+}
+
+input:-ms-input-placeholder {
+  font-family: 'Raleway', sans-serif;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -62,19 +73,13 @@ input:focus:-moz-placeholder {
   color: transparent;
 }
 
-/* Firefox 18- */
-
 input:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* Firefox 19+ */
-
 input:focus:-ms-input-placeholder {
   color: transparent;
 }
-
-/* oldIE ;) */
 
 /*////////// USER PAGES //////////*/
 
@@ -84,13 +89,15 @@ input:focus:-ms-input-placeholder {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+  border: 20px solid #AAA;
   box-sizing: border-box;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 0 auto;
-  text-align: center;
+  line-height: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -103,6 +110,7 @@ input:focus:-ms-input-placeholder {
 
 .user-container h1, .user-container h2, .user-container h3, .user-container p, .user-container a, .user-container button, .user-container a:visited {
   color: #fff;
+  font-family: 'Raleway', sans-serif;
 }
 
 .user-content {
@@ -139,6 +147,13 @@ input:focus:-ms-input-placeholder {
   display: grid;
   grid-template-columns: 100px 1fr 30px 70px 2fr 100px;
   grid-template-rows: 50px 200px auto 100px;
+  border: 20px solid #AAA;
+  box-sizing: border-box;
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
 }
 
 .movie-container button:hover, .movie-container a:hover {
@@ -213,6 +228,7 @@ input:focus:-ms-input-placeholder {
   background-color: #000;
   margin-bottom: 10px;
   font-family: 'Raleway', sans-serif;
+  color: #FFF;
 }
 
 .movie-content input[type="radio"] {
