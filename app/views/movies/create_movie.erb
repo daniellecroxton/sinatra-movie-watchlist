@@ -1,79 +1,93 @@
 <div class="movie-container">
 
-<div class="header">
-   <div class="logo">
-     <p><a href="/movies">A-List</a></p>
-   </div>
-   <div class="logout">
-     <p><a href="/logout">Logout</a></p>
-   </div>
-</div>
+  <div class="header">
+    <div class="logo">
+      <p>
+        <a href="/movies">A-List</a>
+      </p>
+    </div>
+    <div class="logout">
+      <p>
+        <a href="/logout">Logout</a>
+      </p>
+    </div>
+  </div>
 
-<div class="movie-sidebar">
-  <h1>Add a Movie</h1>
-  <h3>
-    * Required field
-  </h3>
-</div>
+  <div class="movie-sidebar">
+    <h1>Add a Movie</h1>
+    <h3>
+      * Required field
+    </h3>
+  </div>
 
-<div class="movie-content">
+  <div class="movie-content">
 
+    <form method="post" action="/movies">
 
-<form method="post" action="/movies">
+      <p>
+        <label for="title">Title*
+        </label>
+      </p>
+      <p>
+        <input type="text" id="title" name="title" required="required"/>
+      </p>
 
-  <p>
-    <label for="title">Title* </label>
-  </p><p>
-    <input type="text" id="title" name="title" required  />
-  </p>
+      <p>
+        <label for="notes">Notes
+        </label>
+      </p>
+      <p>
+        <textarea id="notes" name="notes" rows="10" cols="30"></textarea>
+      </p>
 
-  <p>
-    <label for="notes">Notes </label>
-    </p><p>
-    <textarea id="notes" name="notes" rows="10" cols="30"></textarea>
-  </p>
-
-  <p>
-    <label for="genre">Genre* </label>
-    </p><p>
-      <select id="genre" name="genre" required>
+      <p>
+        <label for="genre">Genre*
+        </label>
+      </p>
+      <p>
+        <select id="genre" name="genre" required="required">
           <option value="Action">Action</option>
-          <option value="Adventure"> Adventure</option>
-          <option value="Comedy"> Comedy</option>
-          <option value="Documentary"> Documentary</option>
-          <option value="Drama"> Drama</option>
-          <option value="Horror"> Horror</option>
-          <option value="Musical"> Musical</option>
-          <option value="Romantic Comedy"> Romantic Comedy</option>
-          <option value="Suspense"> Suspense</option>
+          <option value="Adventure">
+            Adventure</option>
+          <option value="Comedy">
+            Comedy</option>
+          <option value="Documentary">
+            Documentary</option>
+          <option value="Drama">
+            Drama</option>
+          <option value="Horror">
+            Horror</option>
+          <option value="Musical">
+            Musical</option>
+          <option value="Romantic Comedy">
+            Romantic Comedy</option>
+          <option value="Suspense">
+            Suspense</option>
         </select>
-    <!-- <input type="radio" name="genre" id="genre1" value="Action" required checked> Action<br>
-    <input type="radio" name="genre" id="genre2" value="Adventure"> Adventure<br>
-    <input type="radio" name="genre" id="genre3" value="Comedy"> Comedy<br>
-    <input type="radio" name="genre" id="genre4" value="Documentary"> Documentary<br>
-    <input type="radio" name="genre" id="genre5" value="Drama"> Drama<br>
-    <input type="radio" name="genre" id="genre6" value="Horror"> Horror<br>
-    <input type="radio" name="genre" id="genre7" value="Musical"> Musical<br>
-    <input type="radio" name="genre" id="genre8" value="Romantic Comedy"> Romantic Comedy<br>
-    <input type="radio" name="genre" id="genre9" value="Suspense"> Suspense<br> -->
-  </p>
+        <!-- <input type="radio" name="genre" id="genre1" value="Action" required checked> Action<br> <input type="radio" name="genre" id="genre2" value="Adventure"> Adventure<br> <input type="radio" name="genre" id="genre3" value="Comedy"> Comedy<br> <input
+        type="radio" name="genre" id="genre4" value="Documentary"> Documentary<br> <input type="radio" name="genre" id="genre5" value="Drama"> Drama<br> <input type="radio" name="genre" id="genre6" value="Horror"> Horror<br> <input type="radio" name="genre"
+        id="genre7" value="Musical"> Musical<br> <input type="radio" name="genre" id="genre8" value="Romantic Comedy"> Romantic Comedy<br> <input type="radio" name="genre" id="genre9" value="Suspense"> Suspense<br> -->
+      </p>
 
-  <p>
-    <label for="watched">Have you seen it?* </label>
-  </p><p>
-    <input class="radio" type="radio" name="watched" id="watched1" value="1" required> Yes<br>
-    <input class="radio" type="radio" name="watched" id="watched0" value="0" checked> No<br>
-  </p>
+      <p>
+        <label for="watched">Have you seen it?*
+        </label>
+      </p>
+      <p>
+        <input class="radio" type="radio" name="watched" id="watched1" value="1" required="required">
+        Yes<br>
+        <input class="radio" type="radio" name="watched" id="watched0" value="0" checked="checked">
+        No<br>
+      </p>
 
-  <button type="submit" id="create_movie">Create Movie</button>
+      <button type="submit" id="create_movie">Create Movie</button>
 
-</form>
+    </form>
 
-<form action="/movies" method="get">
-  <button class="grey" type="submit"  id="submit" value="Cancel">Cancel</button>
-</form>
+    <form action="/movies" method="get">
+      <button class="grey" type="submit" id="submit" value="Cancel">Cancel</button>
+    </form>
 
-
-</div>
+  </div>
 
 </div>

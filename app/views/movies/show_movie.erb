@@ -1,48 +1,55 @@
 <div class="movie-container">
 
-<div class="header">
-   <div class="logo">
-     <p><a href="/movies">A-List</a></p>
-   </div>
-   <div class="logout">
-     <p><a href="/logout">Logout</a></p>
-   </div>
-</div>
+  <div class="header">
+    <div class="logo">
+      <p>
+        <a href="/movies">A-List</a>
+      </p>
+    </div>
+    <div class="logout">
+      <p>
+        <a href="/logout">Logout</a>
+      </p>
+    </div>
+  </div>
 
-<div class="movie-sidebar">
+  <div class="movie-sidebar">
 
-<h1><%= @movie.title %></h1>
+    <h1><%= @movie.title %></h1>
 
-</div>
+  </div>
 
-<div class="movie-content">
+  <div class="movie-content">
 
-  <p class="flash_message">
-    <% if flash.has?(:message) %>
-      <%= flash[:message] %>
-    <% end %>
-  </p>
+    <p class="flash_message">
+      <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+      <% end %>
+    </p>
 
-<p><%= @movie.notes %></p>
-<p class="info"><%= @movie.genre %></p>
-<p class="info"><% if @movie.watched == 1 %>
-    <%= "Watched"%>
-  <% else %>
-    <%= "Unwatched"%>
-  <% end %>
-</p>
+    <p><%= @movie.notes %></p>
+    <p class="info"><%= @movie.genre %></p>
+    <p class="info">
+      <% if @movie.watched == 1 %>
+        <%= "Watched"%>
+      <% else %>
+        <%= "Unwatched"%>
+      <% end %>
+    </p>
 
-<form action="/movies/<%= @movie.slug %>/edit" method="get">
-  <p><button class="top" type="submit" value="Edit Movie">Edit Movie</button></p>
-</form>
+    <form action="/movies/<%= @movie.slug %>/edit" method="get">
+      <p>
+        <button class="top" type="submit" value="Edit Movie">Edit Movie</button>
+      </p>
+    </form>
 
-<form action="/movies/<%= @movie.slug %>/delete" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <p><button class="grey" type="submit" value="Delete Movie">Delete Movie</button></p>
-</form>
+    <form action="/movies/<%= @movie.slug %>/delete" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <p>
+        <button class="grey" type="submit" value="Delete Movie">Delete Movie</button>
+      </p>
+    </form>
 
-
-
-</div>
+  </div>
 
 </div>

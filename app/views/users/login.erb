@@ -1,26 +1,26 @@
 <div class="user-container">
-    <h1>A-List</h1>
-    <p class="flash_message">
+  <h1>A-List</h1>
+  <p class="flash_message">
     <% if flash.has?(:message) %>
       <%= flash[:message] %>
     <% end %>
-    </p>
+  </p>
 
-    <div class="user-content">
-      <form action="/login" method="post">
+  <div class="user-content">
+    <form action="/login" method="post">
 
-        <p>
-          <label for="email"/>
-          <input type="email" id="email" name="email" placeholder="Email address"required  />
-        </p>
+      <p>
+        <label for="email"/>
+        <input type="email" id="email" name="email" placeholder="Email address" required="required"/>
+      </p>
 
-        <p>
-          <label for="password"/>
-          <input type="password" id="password" name="password" placeholder="Password" required  />
-        </p>
-        <button type="submit" id="submit">Log in</button>
+      <p>
+        <label for="password"/>
+        <input type="password" id="password" name="password" placeholder="Password" required="required"/>
+      </p>
+      <button type="submit" id="submit">Log in</button>
 
-      </form>
+    </form>
 
     <p>
       <a href="/signup">Create an account</a>

@@ -7,7 +7,6 @@
 
 /*////////// GLOBAL //////////*/
 
-
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
@@ -55,10 +54,27 @@ input[type="text"] {
   width: 300px;
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
-input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+/* Firefox 18- */
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+/* Firefox 19+ */
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+/* oldIE ;) */
 
 /*////////// USER PAGES //////////*/
 
@@ -76,9 +92,9 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   margin: 0 auto;
   text-align: center;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing:    border-box;
-  -ms-box-sizing:     border-box;
-  -o-box-sizing:      border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
 }
 
 .user-container h1 {
@@ -117,9 +133,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   cursor: pointer;
 }
 
-
 /*////////// MOVIE PAGES //////////*/
-
 
 .movie-container {
   display: grid;
@@ -156,7 +170,8 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 
 .movie-sidebar {
   grid-column: 2 / span 1;
-  grid-row: 3; / span 1;
+  grid-row: 3;
+  / span 1;
 }
 
 .movie-content {
@@ -198,7 +213,6 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   background-color: #000;
   margin-bottom: 10px;
   font-family: 'Raleway', sans-serif;
-
 }
 
 .movie-content input[type="radio"] {
