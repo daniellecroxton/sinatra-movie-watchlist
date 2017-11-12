@@ -14,9 +14,8 @@
 
   <h1>Your movies</h1>
 
-  <p><label for="selected_genre">Genre:</label>
-</p>
   <form action="/movies?genre=<%= @selected_genre %>&status=<%= @selected_status %>" method=”post”>
+    <p><label for="selected_genre">Genre:</label></p>
     <select name="selected_genre" id="selected_genre">
         <option value="All">All</option>
         <option value="Action">Action</option>

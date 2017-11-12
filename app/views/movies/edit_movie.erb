@@ -11,6 +11,9 @@
 
 <div class="movie-sidebar">
 <h1>Edit <%= @movie.title %></h1>
+<h3>
+  * Required field
+</h3>
 </div>
 
 
@@ -26,9 +29,7 @@
     <% end %>
   </p>
 
-  <p>
-    * Required field
-  </p>
+
   <p>
     <label for="title">Title:* </label>
   </p><p>
@@ -67,13 +68,13 @@
   </p>
 
   <p>
-    <label for="watched">Have you seen this movie yet?* </label>
+    <label for="watched">Have you seen it?* </label>
   </p><p>
     <input type="radio" name="watched" id="watched1" value="1" required <%='checked' if @movie.watched == 1 %>> Yes</input><br>
     <input type="radio" name="watched" id="watched0" value="0" <%='checked' if @movie.watched == 0 %>>  No</input><br>
   </p>
 
-  <button type="submit" id="submit">Save Movie</button>
+  <button class="top" type="submit" id="submit">Save Movie</button>
 
 </form>
 
