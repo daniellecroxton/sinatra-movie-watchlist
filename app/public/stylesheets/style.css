@@ -217,6 +217,10 @@ input:focus:-ms-input-placeholder {
   color: #AAA;
 }
 
+.movie-content h1 {
+  margin-bottom: 30px;
+}
+
 .movie-content a {
   color: #000;
   line-height: 2;
@@ -229,6 +233,11 @@ input:focus:-ms-input-placeholder {
   margin-bottom: 10px;
   font-family: 'Raleway', sans-serif;
   color: #FFF;
+}
+
+.movie-content ul, .movie-content li {
+  list-style: none;
+  padding: 0;
 }
 
 .movie-content input[type="radio"] {

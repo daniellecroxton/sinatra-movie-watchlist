@@ -29,4 +29,23 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def self.filter_movies(user, selected_genre, selected_status)
+    filtered_movies = []
+   if user.movies.empty?
+      "You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist."
+    elsif selected_genre == "All" || selected_genre.blank?
+      # <ul style="list-style: none;">
+         user.movies.collect do |movie|
+            movie
+         end
+     else
+         user.movies.each do |movie|
+            if selected_genre == movie.genre
+              filtered_movies << movie
+            end
+           end
+           filtered_movies
+         end
+     end
+
 end

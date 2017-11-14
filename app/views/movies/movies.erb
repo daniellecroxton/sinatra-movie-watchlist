@@ -17,9 +17,9 @@
 
     <h1>Your movies</h1>
 
-    <form action="/movies?genre=<%= @selected_genre %>&status=<%= @selected_status %>" method="”post”">
+    <form action="/movies?genre=<%= @selected_genre %>&status=<%= @selected_status %>" method="get">
       <p>
-        <label for="selected_genre">Genre:</label>
+        <label for="selected_genre">Genre</label>
       </p>
       <select name="selected_genre" id="selected_genre">
         <option value="All">
@@ -45,7 +45,7 @@
       </select>
 
       <p>
-        <label for="selected_status">Status:</label>
+        <label for="selected_status">Status</label>
       </p>
       <p>
         <select name="selected_status" id="selected_status">
@@ -55,6 +55,12 @@
         </select>
       </p>
       <button type="”submit”" value="Submit">Submit</button>
+    </form>
+
+    <form action="/movies/new" method="get">
+      <p>
+        <button type="submit" value="Add Movie">Add Movie</button>
+      </p>
     </form>
 
   </div>
@@ -67,38 +73,17 @@
       <% end %>
     </p>
 
-    <form action="/movies/new" method="get">
-      <p>
-        <button type="submit" value="Add Movie">Add Movie</button>
-      </p>
-    </form>
 
-    <% if @user.movies.empty? %>
-      <p>
-        You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist.
-      </p>
 
-      <% elsif @selected_genre == "All" %>
-        <ul style="list-style: none;">
-          <% @user.movies.each do |movie| %>
+    <p>
+          <% @movies.each do |movie| %>
             <li>
               <a href="/movies/<%= movie.slug %>"><%= movie.title %></a>
             </li>
           <% end %>
         </ul>
+    </p>
 
-      <% else %>
-        <ul style="list-style: none;">
-          <% @user.movies.each do |movie| %>
-            <li>
-              <a href="/movies/<%= movie.slug %>"><%= movie.title %>
-                <% if @selected_genre == movie.genre %>
-              </a>
-            </li>
-          <% end %>
-                 <% end %>
-        </ul>
-      <% end %>
     </div>
 
   </div>
