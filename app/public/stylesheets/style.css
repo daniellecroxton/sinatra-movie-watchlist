@@ -11,16 +11,17 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
   margin: 0;
-  line-height: 100%;
+  line-height: 1;
 }
 
 .flash_message {
-  color: #FFF;
+  color: #2dd8a2;
   font-weight: bold;
 }
 
 h1 {
   font-size: 2rem;
+  line-height: 1.2;
 }
 
 h2 {
@@ -161,6 +162,13 @@ input:focus:-ms-input-placeholder {
   cursor: pointer;
 }
 
+.movie-container button {
+  background-color: #000;
+  margin-bottom: 10px;
+  font-family: 'Raleway', sans-serif;
+  color: #FFF;
+}
+
 .header {
   grid-column: 2 / span 4;
   grid-row: 2 / span 1;
@@ -194,7 +202,7 @@ input:focus:-ms-input-placeholder {
   grid-row: 3 / span 1;
 }
 
-.movie-content h1, .movie-content label, .movie-content input, .movie-content option, .movie-content select, .movie-content p, .movie-content textarea {
+.movie-content h1, .movie-content label, .movie-content input, .movie-container option, .movie-container select, .movie-content p, .movie-content textarea {
   font-family: 'Raleway', sans-serif;
   color: #000;
 }
@@ -228,13 +236,6 @@ input:focus:-ms-input-placeholder {
   font-weight: bold;
 }
 
-.movie-content button {
-  background-color: #000;
-  margin-bottom: 10px;
-  font-family: 'Raleway', sans-serif;
-  color: #FFF;
-}
-
 .movie-content ul, .movie-content li {
   list-style: none;
   padding: 0;
@@ -244,15 +245,23 @@ input:focus:-ms-input-placeholder {
   margin-bottom: 15px;
 }
 
-.movie-content .grey {
+.movie-container .grey {
   margin-top: 0;
   background-color: #AAA;
 }
 
-.movie-content .top {
+.movie-container .top {
   margin-top: 35px;
 }
 
 .movie-content .info {
   margin-top: 45px;
+}
+
+.movie-content .notes {
+  line-height: 1.5;
+}
+
+.movie-container .your_movies {
+  margin-bottom: 50px;
 }

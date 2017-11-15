@@ -15,7 +15,7 @@
 
   <div class="movie-sidebar">
 
-    <h1>Your movies</h1>
+    <h1 class="your_movies">Your movies</h1>
 
     <form action="/movies?genre=<%= @selected_genre %>&status=<%= @selected_status %>" method="get">
       <p>
@@ -54,12 +54,12 @@
           <option value=0 <%=selected="selected" if @selected_status == "0" %>>Unwatched</option>
         </select>
       </p>
-      <button type="”submit”" value="Submit">Submit</button>
+      <button class="grey" type="submit" value="Submit">Apply Filters</button>
     </form>
 
     <form action="/movies/new" method="get">
       <p>
-        <button type="submit" value="Add Movie">Add Movie</button>
+        <button class="top" type="submit" value="Add Movie">Add Movie</button>
       </p>
     </form>
 
