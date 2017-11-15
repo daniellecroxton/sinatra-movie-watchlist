@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 #Signup
   get '/signup' do
     if logged_in?
-      redirect "/movies"
+      redirect '/movies'
     else
       erb :'users/create_user'
     end

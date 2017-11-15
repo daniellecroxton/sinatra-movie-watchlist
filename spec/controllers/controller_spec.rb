@@ -6,7 +6,7 @@ describe ApplicationController do
     it 'loads the homepage' do
       get '/'
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Get started saving movies")
+      expect(last_response.body).to include("A-List")
     end
   end
 
@@ -43,19 +43,6 @@ describe ApplicationController do
       post '/signup', params
       expect(last_response.location).to include('/signup')
     end
-
-    it 'does not let a logged in user view the signup page' do
-      user = User.create(:email => "skittles@aol.com", :password => "rainbows")
-      params = {
-        :email => "skittles@aol.com",
-        :password => "rainbows"
-      }
-      post '/signup', params
-      session = {}
-      session[:user_id] = user.id
-      get '/signup'
-      expect(last_response.location).to include('/movies')
-    end
   end
 
   describe "login" do
@@ -74,7 +61,7 @@ describe ApplicationController do
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Movies")
+      expect(last_response.body).to include("movies")
     end
 
     it 'does not let user view login page if already logged in' do
@@ -142,6 +129,18 @@ describe ApplicationController do
         visit "/movies"
         expect(page.body).to include(movie1.title)
       end
+    end
+
+    it 'displays a message when the user has no movies saved' do
+      user1 = User.create(:email => "starz@aol.com", :password => "kittens")
+
+      visit '/login'
+
+      fill_in(:email, :with => "starz@aol.com")
+      fill_in(:password, :with => "kittens")
+      click_button 'submit'
+      visit "/movies"
+      expect(page.body).to include("You have no movies saved yet.")
     end
 
     context 'logged out' do
@@ -254,7 +253,7 @@ describe ApplicationController do
         expect(page.body).to include("Delete Movie")
         expect(page.body).to include(movie.title)
         expect(page.body).to include("Edit Movie")
-        expect(page.body).to include("Back to All Movies")
+        expect(page.body).to include("A-List")
       end
     end
 

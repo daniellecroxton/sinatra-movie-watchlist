@@ -76,12 +76,17 @@
 
 
     <p>
+        <% if @movies.empty?%>
+          You have no movies saved yet. Click the 'add movie' button to add a movie to your watchlist.
+        <% else %>
+          <ul>
           <% @movies.each do |movie| %>
             <li>
               <a href="/movies/<%= movie.slug %>"><%= movie.title %></a>
             </li>
           <% end %>
         </ul>
+        <% end %>
     </p>
 
     </div>
