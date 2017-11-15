@@ -24,23 +24,23 @@
       <select name="selected_genre" id="selected_genre">
         <option value="All">
           All</option>
-        <option value="Action">
+        <option value="Action" <%=selected="selected" if @selected_genre == "Action" %>>
           Action</option>
-        <option value="Adventure">
+        <option value="Adventure" <%=selected="selected" if @selected_genre == "Adventure" %>>
           Adventure</option>
-        <option value="Comedy">
+        <option value="Comedy" <%=selected="selected" if @selected_genre == "Comedy" %>>
           Comedy</option>
-        <option value="Documentary">
+        <option value="Documentary" <%=selected="selected" if @selected_genre == "Documentary" %>>
           Documentary</option>
-        <option value="Drama">
+        <option value="Drama" <%=selected="selected" if @selected_genre == "Drama" %>>
           Drama</option>
-        <option value="Horror">
+        <option value="Horror" <%=selected="selected" if @selected_genre == "Horror" %>>
           Horror</option>
-        <option value="Musical">
+        <option value="Musical" <%=selected="selected" if @selected_genre == "Musical" %>>
           Musical</option>
-        <option value="Romantic_Comedy">
+        <option value="Romantic_Comedy" <%=selected="selected" if @selected_genre == "Romantic_Comedy" %>>
           Romantic Comedy</option>
-        <option value="Suspense">
+        <option value="Suspense" <%=selected="selected" if @selected_genre == "Suspense" %>>
           Suspense</option>
       </select>
 
@@ -50,8 +50,8 @@
       <p>
         <select name="selected_status" id="selected_status">
           <option value="All">All</option>
-          <option value=1>Watched</option>
-          <option value=0>Unwatched</option>
+          <option value=1 <%=selected="selected" if @selected_status == "1" %>>Watched</option>
+          <option value=0 <%=selected="selected" if @selected_status == "0" %>>Unwatched</option>
         </select>
       </p>
       <button type="”submit”" value="Submit">Submit</button>
