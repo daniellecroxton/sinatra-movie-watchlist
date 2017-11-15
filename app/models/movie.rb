@@ -38,20 +38,16 @@ class Movie < ActiveRecord::Base
            filtered_movies << movie
          end
     elsif (selected_genre == "All" || selected_genre.blank?) && (selected_status != "All" || !selected_status.blank?)
-      user.movies.each do |movie|
-        binding.pry
-
-           filtered_movies << movie if selected_status == movie.watched
-
+        user.movies.each do |movie|
+           filtered_movies << movie if selected_status.to_i == movie.watched
         end
     elsif (selected_genre != "All" || !selected_genre.blank?) && (selected_status == "All" || selected_status.blank?)
-      user.movies.each do |movie|
-
+        user.movies.each do |movie|
            filtered_movies << movie if selected_genre == movie.genre
         end
      else
          user.movies.each do |movie|
-            filtered_movies << movie if selected_genre == movie.genre && selected_status == movie.watched
+            filtered_movies << movie if selected_genre == movie.genre && selected_status.to_i == movie.watched
            end
          end
          filtered_movies
