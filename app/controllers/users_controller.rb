@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:email] == "" || params[:password] == ""
+      flash[:message] = "All fields must be filled in."
       redirect '/signup'
     elsif User.find_by(:email => params[:email]) != nil
       flash[:message] = "Email already registered, please log-in."
