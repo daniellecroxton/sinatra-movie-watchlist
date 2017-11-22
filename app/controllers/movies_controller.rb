@@ -5,10 +5,8 @@ class MoviesController < ApplicationController
     if logged_in?
       @user = current_user
       @movies = Movie.filter_movies(current_user, params['selected_genre'], params['selected_status'])
-        @selected_genre = params['selected_genre']
-        @selected_status = params['selected_status']
-        # @movies = current_user.movies.all(genre == @selected_genre)
-
+      @selected_genre = params['selected_genre']
+      @selected_status = params['selected_status']
       erb :'movies/movies'
     else
       redirect '/login'
@@ -42,44 +40,58 @@ class MoviesController < ApplicationController
 
 #Edit Movie
     get '/movies/:slug/edit' do
-      @movie = Movie.find_by_slug(params[:slug])
-      if logged_in? && @movie.user_id == current_user.id
-        @movie = Movie.find_by_slug(params[:slug])
-        erb :'movies/edit_movie'
+      if logged_in?
+        if @movie = current_user.movies.find_by_slug(params[:slug])
+          erb :'movies/edit_movie'
+        else
+          redirect '/movies'
+        end
       else
         redirect '/login'
       end
     end
 
     patch "/movies/:slug" do
-      @movie = Movie.find_by_slug(params[:slug])
-      if params[:title] == ""
-        flash[:message] = "Movie title cannot be blank."
-        redirect to "/movies/#{@movie.slug}/edit"
+      if logged_in?
+        if @movie = current_user.movies.find_by_slug(params[:slug])
+          if params[:title] == ""
+            flash[:message] = "Movie title cannot be blank."
+            redirect to "/movies/#{@movie.slug}/edit"
+          else
+            @movie.update(title: params[:title], notes: params[:notes], genre: params[:genre], watched: params[:watched])
+            @movie.save
+            flash[:message] = "Successfully updated movie."
+            redirect "/movies/#{@movie.slug}"
+          end
+        else
+          redirect '/movies'
+        end
       else
-        @movie.update(title: params[:title], notes: params[:notes], genre: params[:genre], watched: params[:watched])
-        @movie.save
-        flash[:message] = "Successfully updated movie."
-        redirect "/movies/#{@movie.slug}"
+        redirect '/login'
       end
     end
 
 #Show Movie and Delete
     get "/movies/:slug" do
-      @movie = Movie.find_by_slug(params[:slug])
-      if logged_in? && @movie.user_id == current_user.id
-        @movie = Movie.find_by_slug(params[:slug])
-        erb :'movies/show_movie'
+      if logged_in?
+        if @movie = current_user.movies.find_by_slug(params[:slug])
+          erb :'movies/show_movie'
+        else
+          redirect '/movies'
+        end
       else
         redirect '/login'
       end
     end
 
     delete '/movies/:slug/delete' do
-      @movie = Movie.find_by_slug(params[:slug])
-      if logged_in? && @movie.user_id == current_user.id
-        @movie.delete
-        redirect '/movies'
+      if logged_in?
+        if @movie = current_user.movies.find_by_slug(params[:slug])
+          @movie.delete
+          redirect '/movies'
+        else
+          redirect '/movies'
+        end
       else
         redirect '/login'
       end
