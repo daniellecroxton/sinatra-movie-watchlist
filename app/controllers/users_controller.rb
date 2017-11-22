@@ -31,16 +31,13 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:email] == "" || params[:password] == ""
-      flash[:message] = "All fields must be filled in."
-      redirect '/signup'
-    elsif User.find_by(:email => params[:email]) != nil
-      flash[:message] = "Email already registered, please log-in."
-      redirect "/login"
-    else
-      @user = User.create(email: params[:email], password: params[:password])
+    @user = User.new(params)
+    if @user.save
       session[:user_id] = @user.id
-      redirect "/movies"
+      redirect '/movies'
+    else
+      flash[:message] = @user.errors.full_messages.to_sentence
+      redirect "/signup"
     end
   end
 
