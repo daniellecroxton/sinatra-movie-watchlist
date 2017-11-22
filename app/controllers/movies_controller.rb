@@ -42,7 +42,8 @@ class MoviesController < ApplicationController
 
 #Edit Movie
     get '/movies/:slug/edit' do
-      if logged_in?
+      @movie = Movie.find_by_slug(params[:slug])
+      if logged_in? && @movie.user_id == current_user.id
         @movie = Movie.find_by_slug(params[:slug])
         erb :'movies/edit_movie'
       else
@@ -65,7 +66,8 @@ class MoviesController < ApplicationController
 
 #Show Movie and Delete
     get "/movies/:slug" do
-      if logged_in?
+      @movie = Movie.find_by_slug(params[:slug])
+      if logged_in? && @movie.user_id == current_user.id
         @movie = Movie.find_by_slug(params[:slug])
         erb :'movies/show_movie'
       else

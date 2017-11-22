@@ -3,10 +3,9 @@
   <p class="flash_message">
     <% if flash.has?(:message) %>
       <%= flash[:message] %>
+    <% else %>
+      Please fill in all fields and then click 'Sign up.'
     <% end %>
-  </p>
-  <p>
-    Please fill in all fields and then click 'Sign up.'
   </p>
 
   <div class="user-content">
@@ -21,6 +20,11 @@
       <p>
         <label for="password"></label>
         <input type="password" id="password" name="password" placeholder="Password" required="required"/>
+      </p>
+
+      <p>
+        <label for="password_confirmation"></label>
+        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required="required"/>
       </p>
       <button type="submit">Sign up</button>
 
